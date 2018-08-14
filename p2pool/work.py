@@ -175,13 +175,13 @@ class WorkerBridge(worker_interface.WorkerBridge):
         for symbol, parameter in zip(contents2[::2], contents2[1::2]):
             if symbol == '+':
                 try:
-                    desired_pseudoshare_target = bitcoin_data.difficulty_to_target(float(parameter))
+                    desired_pseudoshare_target = bitcoin_data.difficulty_to_target_alt(float(parameter), self.node.net.PARENT.DUMB_SCRYPT_DIFF)
                 except:
                     if p2pool.DEBUG:
                         log.err()
             elif symbol == '/':
                 try:
-                    desired_share_target = bitcoin_data.difficulty_to_target(float(parameter))
+                    desired_share_target = bitcoin_data.difficulty_to_target_alt(float(parameter), self.node.net.PARENT.DUMB_SCRYPT_DIFF)
                 except:
                     if p2pool.DEBUG:
                         log.err()
